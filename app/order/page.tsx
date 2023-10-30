@@ -1,0 +1,15 @@
+import { title } from "@/components/primitives";
+// import SearchBar from "./searchbar";
+// import GetData from "./GetData";
+// import { Divider } from "@nextui-org/divider";
+import SearchApp from "./SearchApp";
+
+export default function OrderPage() {
+  return (
+    <div className="w-full max-w-[400px]">
+      <h1 className={title({ color: "violet" })}>Pencarian&nbsp;</h1>
+
+      <SearchApp />
+    </div>
+  );
+}
