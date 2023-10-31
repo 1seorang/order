@@ -13,7 +13,7 @@ import { GithubIcon } from "@/components/icons";
 // import Jejak from "../components/Tanda";
 export default function Home() {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-2 md:py-10">
+    <section className="flex flex-col items-center justify-around h-full gap-4 py-2 md:py-10">
       {/* <Jejak /> */}
       <div className="inline-block w-full max-w-lg text-center justify-center">
         <h1 className={title()}>Follow Your&nbsp;</h1>
