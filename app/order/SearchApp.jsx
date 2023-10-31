@@ -9,7 +9,7 @@ import { Divider } from "@nextui-org/divider";
 import { Snippet } from "@nextui-org/snippet";
 import { Code } from "@nextui-org/react";
 import { Spacer } from "@nextui-org/spacer";
-import FiSearch from "react-icons/fi"
+import { FiSearch } from "react-icons/fi";
 function SearchApp() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -43,7 +43,7 @@ function SearchApp() {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    setSubmittedSearchTerm(searchTerm);
+    setSubmittedSearchTerm(searchTerm.toUpperCase());
   };
 
   // console.log(`dicari : ${submittedSearchTerm}`);
@@ -52,7 +52,10 @@ function SearchApp() {
     <>
       <Divider className="my-2 px-6" />
       <div>
-        <form onSubmit={handleSearchSubmit} className="mb-5">
+        <form
+          onSubmit={handleSearchSubmit}
+          className="mb-5 justify-center w-full"
+        >
           <Input
             className="mb-2"
             type="text"
@@ -87,16 +90,27 @@ function SearchApp() {
               variant: "shadow",
             })}
           >
-            Cari <FiSearch/>
+            Cari <FiSearch />
           </Button>
         </form>
         <Divider />
-        <div className="flex w-full flex-col ">
-          <Tabs size="sm" color="primary">
+        <div className="flex w-full flex-col">
+          <Tabs
+            size="sm"
+            color="primary"
+            variant="underlined"
+            classNames={{
+              tabList:
+                "gap-6 w-full relative rounded-none p-0 border-b border-divider",
+              cursor: "w-full bg-[#2244ee]",
+              tab: "max-w-fit px-0 h-8",
+              tabContent: "group-data-[selected=true]:text-[#0626d4]",
+            }}
+          >
             {submittedSearchTerm && filteredData
               ? filteredData.map((item, index) => (
                   <Tab key={index} title={item[0]}>
-                    <Card className="w-full max-w-[400px] py-1">
+                    <Card className="w-full py-1">
                       <CardHeader className="block gap-3">
                         <h4 className="text-medium font-medium"> {item[1]} </h4>
                         <p className=" text-default-500">

@@ -18,21 +18,21 @@ export function Providers({ children, themeProps }: ProvidersProps) {
         rotate={-45}
         // gapY={80}
         // gapX={10}
-        fontFamily="FontMono"
-        width={200}
-        height={30}
+        fontFamily="FontSans"
+        width={150}
+        height={20}
         fontSize={22}
         fontColor="rgb(255 0 0 / 25%)"
       >
         <Watermark
-          content="©2023"
+          content="© 2023"
           rotate={-45}
           //   gapY={10}
           //   gapX={10}
-          offsetTop={115}
-          offsetLeft={125}
-          width={200}
-          height={30}
+          offsetTop={117}
+          offsetLeft={117}
+          width={150}
+          height={20}
           fontSize={8}
           fontColor="rgb(255 0 0 / 25%)"
         >

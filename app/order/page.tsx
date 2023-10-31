@@ -6,7 +6,7 @@ import SearchApp from "./SearchApp";
 
 export default function OrderPage() {
   return (
-    <div className="w-full max-w-[400px]">
+    <div className="w-full justify-center max-w-[400]">
       <h1 className={title({ color: "violet" })}>Pencarian&nbsp;</h1>
 
       <SearchApp />

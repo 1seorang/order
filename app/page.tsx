@@ -38,7 +38,7 @@ export default function Home() {
             variant: "shadow",
           })}
         >
-          Klik disini!
+          Buka!
         </Link>
       </div>
 
