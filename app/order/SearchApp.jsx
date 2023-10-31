@@ -9,7 +9,7 @@ import { Divider } from "@nextui-org/divider";
 import { Snippet } from "@nextui-org/snippet";
 import { Code } from "@nextui-org/react";
 import { Spacer } from "@nextui-org/spacer";
-
+import FiSearch from "react-icons/fi"
 function SearchApp() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -87,7 +87,7 @@ function SearchApp() {
               variant: "shadow",
             })}
           >
-            Submit
+            Cari <FiSearch/>
           </Button>
         </form>
         <Divider />

@@ -15,12 +15,12 @@ export const siteConfig = {
 		},
 		{
 			label: "Achievement",
-			href: "../listrik",
+			href: "https://tfjsmartfactory.online/listrik/",
 
 		},
 		{
 			label: "Blog",
-			href: "../blog",
+			href: "https://tfjsmartfactory.online/listrik/",
 			class: "disabled"
 		},
 		{
@@ -40,11 +40,11 @@ export const siteConfig = {
 		},
 		{
 			label: "Achievement",
-			href: "../listrik",
+			href: "https://tfjsmartfactory.online/listrik/",
 		},
 		{
 			label: "Blog",
-			href: "../blog",
+			href: "https://tfjsmartfactory.online/blog/",
 		},
 		{
 			label: "About",

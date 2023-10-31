@@ -21,7 +21,7 @@ export function Providers({ children, themeProps }: ProvidersProps) {
         fontFamily="FontMono"
         width={200}
         height={30}
-        fontSize={20}
+        fontSize={22}
         fontColor="rgb(255 0 0 / 25%)"
       >
         <Watermark
@@ -30,7 +30,7 @@ export function Providers({ children, themeProps }: ProvidersProps) {
           //   gapY={10}
           //   gapX={10}
           offsetTop={115}
-          offsetLeft={115}
+          offsetLeft={125}
           width={200}
           height={30}
           fontSize={8}
