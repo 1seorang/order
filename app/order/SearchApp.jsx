@@ -61,10 +61,10 @@ function SearchApp() {
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            label="No Tracking"
+            label="No Tracking / PR / PO"
             labelPlacement="inside"
           />
-          <Input
+          {/* <Input
             key="NoPR"
             type="text"
             className="mb-1 cursor-not-allowed"
@@ -79,7 +79,7 @@ function SearchApp() {
             label="No PO"
             isDisabled
             labelPlacement="outside"
-          />
+          /> */}
           <Button
             type="submit"
             radius="full"
