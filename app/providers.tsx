@@ -20,7 +20,7 @@ export function Providers({ children, themeProps }: ProvidersProps) {
         // gapX={10}
         fontFamily="FontSans"
         width={120}
-        height={20}
+        height={15}
         fontSize={22}
         fontColor="rgb(255 0 0 / 25%)"
       >
@@ -32,7 +32,7 @@ export function Providers({ children, themeProps }: ProvidersProps) {
           offsetTop={117}
           offsetLeft={117}
           width={120}
-          height={20}
+          height={15}
           fontSize={8}
           fontColor="rgb(255 0 0 / 25%)"
         >

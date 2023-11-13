@@ -50,14 +50,34 @@ function SearchApp() {
   // console.log(`hasilna : ${filteredData}`);
   return (
     <>
-      <Divider className="my-2 px-6" />
+      <Divider className="my-2 px-8" />
       <div>
         <form
           onSubmit={handleSearchSubmit}
           className="mb-5 justify-center w-full"
         >
-          <Input
-            className="mb-2"
+          <Input variant="faded" size="md"
+            className={{ label:["mb-2"],
+              input: [
+              "bg-transparent",
+              "text-black/70 dark:text-white/50",
+              "placeholder:text-slate-700/50 dark:placeholder:text-slate-100/60",
+             
+            ],
+            innerWrapper: "bg-transparent",
+            inputWrapper: [
+              "shadow-xl",
+              "bg-default-200/50",
+              "dark:bg-default/60",
+              "backdrop-blur-xl",
+              "backdrop-saturate-200",
+              "hover:bg-default-200/70",
+              "focus-within:!bg-default-200/50",
+              "dark:hover:bg-default/70",
+              "dark:focus-within:!bg-default/60",
+              "!cursor-text",
+              
+            ],}}
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -80,6 +100,7 @@ function SearchApp() {
             isDisabled
             labelPlacement="outside"
           /> */}
+          <Spacer className="my-1" />
           <Button
             type="submit"
             radius="full"
@@ -104,7 +125,7 @@ function SearchApp() {
                 "gap-6 w-full relative rounded-none p-0 border-b border-divider",
               cursor: "w-full bg-[#2244ee]",
               tab: "max-w-fit px-0 h-8",
-              tabContent: "group-data-[selected=true]:text-[#0626d4]",
+              tabContent: "group-data-[selected=true]:text-[#889bf7]",
             }}
           >
             {submittedSearchTerm && filteredData

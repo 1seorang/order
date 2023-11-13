@@ -38,7 +38,7 @@ export default function Home() {
             variant: "shadow",
           })}
         >
-          Buka!
+          Kanjut!
         </Link>
       </div>
 
