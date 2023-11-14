@@ -56,28 +56,35 @@ function SearchApp() {
           onSubmit={handleSearchSubmit}
           className="mb-5 justify-center w-full"
         >
-          <Input variant="faded" size="md"
-            className={{ label:["mb-2"],
+          <Input
+            variant="faded"
+            size="md"
+            className={{
+              label: [
+                "bg-transparent",
+                "text-slate-600",
+                "dark:text-slate-800",
+              ],
               input: [
-              "bg-transparent",
-              "text-black/70 dark:text-white/50",
-              "placeholder:text-slate-700/50 dark:placeholder:text-slate-100/60",
-             
-            ],
-            innerWrapper: "bg-transparent",
-            inputWrapper: [
-              "shadow-xl",
-              "bg-default-200/50",
-              "dark:bg-default/60",
-              "backdrop-blur-xl",
-              "backdrop-saturate-200",
-              "hover:bg-default-200/70",
-              "focus-within:!bg-default-200/50",
-              "dark:hover:bg-default/70",
-              "dark:focus-within:!bg-default/60",
-              "!cursor-text",
-              
-            ],}}
+                "bg-transparent",
+                "text-black/70 dark:text-white/50",
+                "placeholder:text-slate-700/50 dark:placeholder:text-slate-100/60",
+              ],
+              innerWrapper: "bg-transparent",
+              inputWrapper: [
+                "shadow-xl",
+                "bg-default-200/50",
+                "dark:bg-default/60",
+
+                "backdrop-blur-xl",
+                "backdrop-saturate-200",
+                "hover:bg-default-200/70",
+                "focus-within:!bg-default-200/50",
+                "dark:hover:bg-default/70",
+                "dark:focus-within:!bg-default/60",
+                "!cursor-text",
+              ],
+            }}
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -104,12 +111,12 @@ function SearchApp() {
           <Button
             type="submit"
             radius="full"
-            //   className="bg-gradient-to-tr from-blue-800 to-pink-300 text-white shadow-lg"
-            className={buttonStyles({
-              color: "primary",
-              radius: "full",
-              variant: "shadow",
-            })}
+            className="relative overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-blue-700/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-blue-700/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
+            // className={buttonStyles({
+            //   color: "primary",
+            //   radius: "full",
+            //   variant: "shadow",
+            // })}
           >
             Cari <FiSearch />
           </Button>
