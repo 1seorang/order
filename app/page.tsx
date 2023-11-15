@@ -21,11 +21,11 @@ export default function Home() {
         <h1 className={title({ color: "violet" })}>Common Sense&nbsp;</h1>
         {/* <Divider className="mt-5" /> */}
         <Spacer className="mt-5"></Spacer>
-        <h2 className={subtitle({ class: "mt-4" })}>
+        <h2 className={subtitle({ class: "mt-5" })}>
           Jangan menunggu sempurna untuk memulai sesuatu, tapi jalanilah
           walaupun itu burik
         </h2>
-        <code className="italic text-default-600">~ John </code>
+        <code className="italic text-default-600"> ~ John </code>
       </div>
 
       <div className="flex gap-3">
@@ -36,7 +36,11 @@ export default function Home() {
             color: "primary",
             radius: "full",
             variant: "shadow",
+            class:
+              " relative overflow-visible hover:text-white/80  hover:translate-y-1 text-blue-200 px-12 shadow-md bg-blue-500/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-blue-500/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0",
           })}
+          data-hover={true}
+          data-focus={true}
         >
           Kanjut!
         </Link>

@@ -27,7 +27,6 @@ function SearchApp() {
         setFilteredData(data);
       });
   }, []);
-
   useEffect(() => {
     // Filter data based on the search term
     const filtered = data.filter((item) =>
@@ -75,7 +74,6 @@ function SearchApp() {
                 "shadow-xl",
                 "bg-default-200/50",
                 "dark:bg-default/60",
-
                 "backdrop-blur-xl",
                 "backdrop-saturate-200",
                 "hover:bg-default-200/70",
@@ -129,17 +127,17 @@ function SearchApp() {
             variant="underlined"
             classNames={{
               tabList:
-                "gap-6 w-full relative rounded-none p-0 border-b border-divider",
+                "gap-6 w-full relative rounded-none p-0 border-b border-divider text-[#aaa]",
               cursor: "w-full bg-[#2244ee]",
               tab: "max-w-fit px-0 h-8",
-              tabContent: "group-data-[selected=true]:text-[#99bbff]",
+              tabContent: "group-data-[selected=true]:text-[#ddf]",
             }}
           >
             {submittedSearchTerm && filteredData
               ? filteredData.map((item, index) => (
                   <Tab key={index} title={item[0]}>
                     <Card className="w-full py-1">
-                      <CardHeader className="block gap-3">
+                      <CardHeader className="block gap-1 p-1">
                         <h4 className="text-medium font-medium"> {item[1]} </h4>
                         <p className=" text-default-500">
                           {" "}
@@ -147,7 +145,7 @@ function SearchApp() {
                         </p>
                       </CardHeader>
                       <Divider />
-                      <CardBody>
+                      <CardBody className="py-1 px-2">
                         <p className="text-default-800"> {item[4]} </p>
                         <p className="text-small text-default-700">
                           {" "}
