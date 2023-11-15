@@ -120,7 +120,7 @@ function SearchApp() {
           <Button
             type="submit"
             radius="full"
-            className="relative overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-blue-700/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-blue-700/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
+            className="relative overflow-visible rounded-full hover:translate-y-1 px-12 shadow-xl bg-blue-700/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-blue-700/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
             // className={buttonStyles({
             //   color: "primary",
             //   radius: "full",
@@ -279,7 +279,7 @@ function SearchApp() {
                           className="absolute right-0 bottom-0 hover:bg-purple-500/40 transition-all"
                           title="Print"
                           size="sm"
-                          onClick={() => window.print()}
+                          onClick={Print}
                         >
                           <FaFileDownload className="p-0 m-0 text-lg fill-slate-200 stroke-yellow-950" />
                         </Button>
@@ -297,3 +297,12 @@ function SearchApp() {
 }
 
 export default SearchApp;
+
+const Print = () => {
+  //console.log('print');
+  let printContents = document.getElementById("card1").innerHTML;
+  let originalContents = document.body.innerHTML;
+  document.body.innerHTML = printContents;
+  window.print();
+  document.body.innerHTML = originalContents;
+};
