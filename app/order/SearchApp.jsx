@@ -4,18 +4,28 @@ import { Tabs, Tab } from "@nextui-org/tabs";
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
-import { button as buttonStyles } from "@nextui-org/theme";
+// import { button as buttonStyles } from "@nextui-org/theme";
 import { Divider } from "@nextui-org/divider";
 import { Snippet } from "@nextui-org/snippet";
 import { Code } from "@nextui-org/react";
 import { Spacer } from "@nextui-org/spacer";
 import { FiSearch } from "react-icons/fi";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { FaFileDownload } from "react-icons/fa";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from "@nextui-org/modal";
+import { useDisclosure } from "@nextui-org/use-disclosure";
 function SearchApp() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [submittedSearchTerm, setSubmittedSearchTerm] = useState("");
-
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   useEffect(() => {
     // Fetch data from your API
     fetch(
@@ -61,6 +71,7 @@ function SearchApp() {
             className={{
               label: [
                 "bg-transparent",
+                "underline",
                 "text-slate-600",
                 "dark:text-slate-800",
               ],
@@ -136,16 +147,97 @@ function SearchApp() {
             {submittedSearchTerm && filteredData
               ? filteredData.map((item, index) => (
                   <Tab key={index} title={item[0]}>
-                    <Card className="w-full py-1">
+                    <Card className="w-full py-1" id="card1">
                       <CardHeader className="block gap-1 p-1">
-                        <h4 className="text-medium font-medium"> {item[1]} </h4>
+                        <h4 className="text-medium font-medium drop-shadow-xl shadow-gray-200">
+                          {" "}
+                          {item[1]}{" "}
+                        </h4>
                         <p className=" text-default-500">
                           {" "}
                           Status: {item[16]}{" "}
                         </p>
+                        <Button
+                          onPress={onOpen}
+                          className="absolute top-0 right-0 p-0  m-0 hover:opacity-80 opacity-50 transition-all hover:bg-blue-700"
+                          size="sm"
+                          title="Lihat Detail"
+                        >
+                          <FaArrowUpRightFromSquare className="" />
+                        </Button>
                       </CardHeader>
                       <Divider />
                       <CardBody className="py-1 px-2">
+                        <div>
+                          {" "}
+                          <Modal
+                            size="md"
+                            backdrop="opaque"
+                            isOpen={isOpen}
+                            placement="center"
+                            onOpenChange={onOpenChange}
+                            radius="3xl"
+                            classNames={{
+                              body: "py-3",
+                              backdrop: "bg-[#292f46]/70 backdrop-opacity-60",
+                              base: "border-[#292f46] bg-[#19172c] dark:bg-[#19172c] text-[#a8b0d3]",
+                              header: "border-b-[1px] border-[#292f46]",
+                              footer: "border-t-[1px] border-[#292f46]",
+                              closeButton:
+                                "hover:bg-white/5 active:bg-white/10",
+                            }}
+                          >
+                            <ModalContent>
+                              {(onClose) => (
+                                <>
+                                  <ModalHeader className="flex flex-col gap-1">
+                                    {item[2]}
+                                  </ModalHeader>
+                                  <ModalBody className="text-xs uppercase">
+                                    <p>
+                                      Dept : - <br />
+                                      Date : {item[5]}
+                                    </p>
+                                    <p>
+                                      Mat. Code : {item[3]} <br />
+                                      Mat. Name : {item[4]} <br />
+                                      Qty : {item[7]} {item[8]}
+                                    </p>
+                                    <p>
+                                      No PR : {item[9]} <br />
+                                      No PO : {item[17]}
+                                    </p>
+                                    <p>
+                                      Remark : {item[15]}
+                                      <br />
+                                      user : {item[14]}
+                                    </p>
+                                    <p>
+                                      Vendor : {item[18]}
+                                      <br />
+                                      Tgl. GR : {item[19]}
+                                    </p>
+                                  </ModalBody>
+                                  <ModalFooter className="py-2">
+                                    <Button
+                                      color="danger"
+                                      variant="ghost"
+                                      onPress={onClose}
+                                    >
+                                      Close
+                                    </Button>
+                                    <Button
+                                      className="bg-[#6f4ef2] shadow-lg shadow-indigo-500/20 hover:backdrop-blur-lg hover:bg-blue-500/50 transition duration-500"
+                                      onPress={onClose}
+                                    >
+                                      Close (Juga)
+                                    </Button>
+                                  </ModalFooter>
+                                </>
+                              )}
+                            </ModalContent>
+                          </Modal>
+                        </div>
                         <p className="text-default-800"> {item[4]} </p>
                         <p className="text-small text-default-700">
                           {" "}
@@ -183,6 +275,14 @@ function SearchApp() {
                             Vendor: {item[18]}
                           </p>
                         </Code>
+                        <Button
+                          className="absolute right-0 bottom-0 hover:bg-purple-500/40 transition-all"
+                          title="Print"
+                          size="sm"
+                          onClick={() => window.print()}
+                        >
+                          <FaFileDownload className="p-0 m-0 text-lg fill-slate-200 stroke-yellow-950" />
+                        </Button>
                       </CardFooter>
                     </Card>
                   </Tab>
