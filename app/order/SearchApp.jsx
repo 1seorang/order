@@ -11,6 +11,7 @@ import { Code } from "@nextui-org/react";
 import { Spacer } from "@nextui-org/spacer";
 import { FiSearch } from "react-icons/fi";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import Watermark from "@uiw/react-watermark";
 import { FaFileDownload } from "react-icons/fa";
 import {
   Modal,
@@ -191,49 +192,70 @@ function SearchApp() {
                             <ModalContent>
                               {(onClose) => (
                                 <>
-                                  <ModalHeader className="flex flex-col gap-1">
-                                    {item[2]}
-                                  </ModalHeader>
-                                  <ModalBody className="text-xs uppercase">
-                                    <p>
-                                      Dept : - <br />
-                                      Date : {item[5]}
-                                    </p>
-                                    <p>
-                                      Mat. Code : {item[3]} <br />
-                                      Mat. Name : {item[4]} <br />
-                                      Qty : {item[7]} {item[8]}
-                                    </p>
-                                    <p>
-                                      No PR : {item[9]} <br />
-                                      No PO : {item[17]}
-                                    </p>
-                                    <p>
-                                      Remark : {item[15]}
-                                      <br />
-                                      user : {item[14]}
-                                    </p>
-                                    <p>
-                                      Vendor : {item[18]}
-                                      <br />
-                                      Tgl. GR : {item[19]}
-                                    </p>
-                                  </ModalBody>
-                                  <ModalFooter className="py-2">
-                                    <Button
-                                      color="danger"
-                                      variant="ghost"
-                                      onPress={onClose}
+                                  <Watermark
+                                    content="Aby"
+                                    rotate={-45}
+                                    fontFamily="FontSans"
+                                    width={70}
+                                    height={15}
+                                    fontSize={22}
+                                    fontColor="rgb(255 0 0 / 25%)"
+                                  >
+                                    <Watermark
+                                      content="© 2023"
+                                      rotate={-45}
+                                      offsetTop={117}
+                                      offsetLeft={117}
+                                      width={70}
+                                      height={15}
+                                      fontSize={8}
+                                      fontColor="rgb(255 0 0 / 25%)"
                                     >
-                                      Close
-                                    </Button>
-                                    <Button
-                                      className="bg-[#6f4ef2] shadow-lg shadow-indigo-500/20 hover:backdrop-blur-lg hover:bg-blue-500/50 transition duration-500"
-                                      onPress={onClose}
-                                    >
-                                      Close (Juga)
-                                    </Button>
-                                  </ModalFooter>
+                                      <ModalHeader className="flex flex-col gap-1">
+                                        {item[2]}
+                                      </ModalHeader>
+                                      <ModalBody className="text-xs uppercase">
+                                        <p>
+                                          Dept : - <br />
+                                          Date : {item[5]}
+                                        </p>
+                                        <p>
+                                          Mat. Code : {item[3]} <br />
+                                          Mat. Name : {item[4]} <br />
+                                          Qty : {item[7]} {item[8]}
+                                        </p>
+                                        <p>
+                                          No PR : {item[9]} <br />
+                                          No PO : {item[17]}
+                                        </p>
+                                        <p>
+                                          Remark : {item[15]}
+                                          <br />
+                                          user : {item[14]}
+                                        </p>
+                                        <p>
+                                          Vendor : {item[18]}
+                                          <br />
+                                          Tgl. GR : {item[19]}
+                                        </p>
+                                      </ModalBody>
+                                      <ModalFooter className="py-2">
+                                        <Button
+                                          color="danger"
+                                          variant="ghost"
+                                          onPress={onClose}
+                                        >
+                                          Close
+                                        </Button>
+                                        <Button
+                                          className="bg-[#6f4ef2] shadow-lg shadow-indigo-500/20 hover:backdrop-blur-lg hover:bg-blue-500/50 transition duration-500"
+                                          onPress={onClose}
+                                        >
+                                          Close (Juga)
+                                        </Button>
+                                      </ModalFooter>
+                                    </Watermark>
+                                  </Watermark>
                                 </>
                               )}
                             </ModalContent>
