@@ -147,7 +147,7 @@ function SearchApp() {
             {submittedSearchTerm && filteredData
               ? filteredData.map((item, index) => (
                   <Tab key={index} title={item[0]}>
-                    <Card className="w-full py-1" id="card1">
+                    <Card className="w-full py-1 print:bg-red-950" id="card1">
                       <CardHeader className="block gap-1 p-1">
                         <h4 className="text-medium font-medium drop-shadow-xl shadow-gray-200">
                           {" "}
@@ -159,7 +159,7 @@ function SearchApp() {
                         </p>
                         <Button
                           onPress={onOpen}
-                          className="absolute top-0 right-0 p-0  m-0 hover:opacity-80 opacity-50 transition-all hover:bg-blue-700"
+                          className="absolute top-0 right-0 p-0  m-0 hover:opacity-80 opacity-50 transition-all hover:bg-blue-700 bg-blue-500/60"
                           size="sm"
                           title="Lihat Detail"
                         >
@@ -172,19 +172,20 @@ function SearchApp() {
                           {" "}
                           <Modal
                             size="md"
-                            backdrop="opaque"
+                            backdrop="blur"
                             isOpen={isOpen}
+                            isDismissable={false}
                             placement="center"
                             onOpenChange={onOpenChange}
                             radius="3xl"
                             classNames={{
                               body: "py-3",
-                              backdrop: "bg-[#292f46]/70 backdrop-opacity-60",
+                              // backdrop: "bg-[#292f46]/70 backdrop-opacity-60",
                               base: "border-[#292f46] bg-[#19172c] dark:bg-[#19172c] text-[#a8b0d3]",
                               header: "border-b-[1px] border-[#292f46]",
                               footer: "border-t-[1px] border-[#292f46]",
                               closeButton:
-                                "hover:bg-white/5 active:bg-white/10",
+                                "hover:bg-white/5 text-red-500/70 hover:text-red-500/90 active:bg-white/10",
                             }}
                           >
                             <ModalContent>
@@ -276,7 +277,7 @@ function SearchApp() {
                           </p>
                         </Code>
                         <Button
-                          className="absolute right-0 bottom-0 hover:bg-purple-500/40 transition-all"
+                          className="absolute right-0 bottom-0 hover:bg-purple-500/40 bg-purple-300/40 transition-all"
                           title="Print"
                           size="sm"
                           onClick={Print}
