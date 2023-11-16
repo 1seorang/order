@@ -186,7 +186,7 @@ function SearchApp() {
                               header: "border-b-[1px] border-[#292f46]",
                               footer: "border-t-[1px] border-[#292f46]",
                               closeButton:
-                                "hover:bg-white/5 text-red-500/70 hover:text-red-500/90 active:bg-white/10",
+                                "hover:bg-white/5 text-red-500/70 hover:text-red-500/90 active:bg-white/10 z-10",
                             }}
                           >
                             <ModalContent>
@@ -212,7 +212,7 @@ function SearchApp() {
                                       fontColor="rgb(255 0 0 / 25%)"
                                     >
                                       <ModalHeader className="flex flex-col gap-1">
-                                        {item[2]}
+                                        {item[2] || item[0]}
                                       </ModalHeader>
                                       <ModalBody className="text-xs uppercase">
                                         <p>
