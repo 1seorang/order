@@ -16,8 +16,8 @@ export default function Error({
  
   return (
     <div>
-      <h2>Something went wrong!</h2>
-      <button
+      <h2 className='text-4xl animate-pulse text-fuchsia-600'>Something went wrong!</h2>
+      <button color='primary' 
         onClick={
           // Attempt to recover by trying to re-render the segment
           () => reset()

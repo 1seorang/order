@@ -31,13 +31,13 @@ export default function Home() {
       <div className="flex gap-3">
         <Link
           as={NextLink}
-          href="/order"
+          href="/older"
           className={buttonStyles({
             color: "primary",
             radius: "full",
             variant: "shadow",
             class:
-              " relative overflow-visible hover:text-white/80  hover:translate-y-1 text-blue-200 px-12 shadow-md bg-blue-500/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-blue-500/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0",
+              "active:transition-all active:duration-700 active:ease-in-out relative overflow-visible hover:text-white/80  hover:translate-y-1 text-blue-200 px-12 shadow-md bg-blue-500/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-blue-500/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0",
           })}
           data-hover={true}
           data-focus={true}
