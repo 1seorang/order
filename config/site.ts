@@ -11,7 +11,7 @@ export const siteConfig = {
 		},
 		{
 			label: "Ordering",
-			href: "/older",
+			href: "/order",
 		},
 		{
 			label: "Achievement",
@@ -36,7 +36,7 @@ export const siteConfig = {
 		},
 		{
 			label: "Ordering",
-			href: "/older",
+			href: "/order",
 		},
 		{
 			label: "Achievement",

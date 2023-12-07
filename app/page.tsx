@@ -31,7 +31,7 @@ export default function Home() {
       <div className="flex gap-3">
         <Link
           as={NextLink}
-          href="/older"
+          href="/order"
           className={buttonStyles({
             color: "primary",
             radius: "full",
