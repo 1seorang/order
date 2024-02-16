@@ -12,6 +12,7 @@ import { Spacer } from "@nextui-org/spacer";
 import { FiSearch } from "react-icons/fi";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import Watermark from "@uiw/react-watermark";
+import { Spinner } from "@nextui-org/spinner";
 import { FaFileDownload } from "react-icons/fa";
 import {
   Modal,
@@ -32,7 +33,7 @@ function SearchApp() {
     if (loading) {
       // Fetch data from your API
       fetch(
-        "https://sheets.googleapis.com/v4/spreadsheets/1ZJKK2v-8r8FJtMx9hTiYI8YJrjqW0C6KR4gF964UaTs/values/PACK?alt=json&key=AIzaSyBgoFd8Gi1YDUSc6llH9TxMDSpkr7jcavU"
+        "https://sheets.googleapis.com/v4/spreadsheets/1ZJKK2v-8r8FJtMx9hTiYI8YJrjqW0C6KR4gF964UaTs/values/PACK!A3:Z6000?alt=json&key=AIzaSyBgoFd8Gi1YDUSc6llH9TxMDSpkr7jcavU"
       )
         .then((response) => response.json())
         .then((data) => {
@@ -42,18 +43,9 @@ function SearchApp() {
         });
     }
   }, [loading]);
+
   useEffect(() => {
-    // Fetch data from your API
-    fetch(
-      "https://sheets.googleapis.com/v4/spreadsheets/1ZJKK2v-8r8FJtMx9hTiYI8YJrjqW0C6KR4gF964UaTs/values/PACK?alt=json&key=AIzaSyBgoFd8Gi1YDUSc6llH9TxMDSpkr7jcavU"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data.values);
-        setFilteredData(data);
-      });
-  }, []);
-  useEffect(() => {
+    if (loading) return;
     // Filter data based on the search term
     const filtered = data.filter((item) =>
       Object.values(item).some((value) =>
@@ -64,11 +56,13 @@ function SearchApp() {
       )
     );
     setFilteredData(filtered);
-  }, [submittedSearchTerm, data]);
+  }, [submittedSearchTerm, data, loading]);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
+    if(searchTerm == "") return
     setSubmittedSearchTerm(searchTerm.toUpperCase());
+    setLoading(true);
   };
 
   // console.log(`dicari : ${submittedSearchTerm}`);
@@ -112,7 +106,7 @@ function SearchApp() {
             }}
             type="text"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) =>  setSearchTerm(e.target.value)}
             label="No Tracking / PR / PO"
             labelPlacement="inside"
           />
@@ -174,8 +168,7 @@ function SearchApp() {
             ) : // "loading"
               !filteredData ? (
                 "loading"
-              ) : filteredData.length > 0
-                ? filteredData.map((item, index) => (
+              ) : filteredData.length > 0 ? (filteredData.map((item, index) => (
                   <Tab key={index} title={item[0]}>
                     <Card className="w-full py-1 print:bg-red-950" id="card1">
                       <CardHeader className="block gap-1 p-1">
@@ -185,7 +178,7 @@ function SearchApp() {
                         </h4>
                         <p className=" text-default-500">
                           {" "}
-                          Status: {item[16]}{" "}
+                          Status: {item[14]}{" "}
                         </p>
                         <Button
                           onPress={onOpen}
@@ -340,7 +333,7 @@ function SearchApp() {
                   </Tab>
                   // <li key={index}>{JSON.stringify(item)}</li>
                 ))
-                : null}
+               ) : null}
           </Tabs>
         </div>
       </div>

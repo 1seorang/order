@@ -42,7 +42,7 @@ function BottomNav() {
 
         <NavbarContent className="text-center">
           <NavbarItem className="w-full flex justify-center">
-            <NextLink href="/loading">
+            <NextLink href="/order">
               <Button
                 isIconOnly
                 aria-label="cari"
