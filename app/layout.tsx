@@ -5,6 +5,7 @@ import { fontSans } from "@/config/fonts";
 import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
 import { Link } from "@nextui-org/link";
+import BottomNav from "@/components/BottomNav";
 import clsx from "clsx";
 
 export const metadata: Metadata = {
@@ -71,6 +72,7 @@ export default function RootLayout({
             </footer>
           </div>
         </Providers>
+        <BottomNav />
       </body>
     </html>
   );
