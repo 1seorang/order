@@ -58,7 +58,7 @@ export const Navbar = () => {
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <Logo />
-            <p className="font-bold text-lg text-fuchsia-950 hover:text-fuchsia-600 text-inherit italic shadow">Maintenance Planner</p>
+            <p className="font-bold text-xl from-slate-950 bg-slate-800 rounded-lg shadow-slate-100 px-3 my-2 animate-pulse duration-[500] transition-all to-orange-900 bg-transparent backdrop-filter cursor-pointer text-fuchsia-900/70 hover:text-fuchsia-600   shadow">Maintenance Planner</p>
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
