@@ -10,16 +10,18 @@ import { AudioProvider } from "./providers/AudioProvider/index";
 import KalQ from "./KalQ";
 export default function KalkulatoPage() {
   return (
-    <div>
+    <div className="w-full">
       <h1 className={title()}>Kalkulator</h1>
+      <div className="w-full  flex flex-col-reverse justify-center">
 
-      <DisplayProvider>
-        {/* <AudioProvider> */}
-        <FlashDisplayProvider>
-          <KalQ />
-        </FlashDisplayProvider>
-        {/* </AudioProvider> */}
-      </DisplayProvider>
+        <DisplayProvider>
+          {/* <AudioProvider> */}
+          <FlashDisplayProvider>
+            <KalQ />
+          </FlashDisplayProvider>
+          {/* </AudioProvider> */}
+        </DisplayProvider>
+      </div>
     </div>
   );
 }

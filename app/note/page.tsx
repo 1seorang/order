@@ -1,13 +1,14 @@
 import { title } from "@/components/primitives";
-import { TodosProvider } from './contexts/todos'
+
 import App from "./App";
 export default function DocsPage() {
 	return (
-		<div>
+		<div className="w-full mx-1 md:mx-3">
 			<h1 className={title()}>Note-X</h1>
-<TodosProvider>
-	<App />
-</TodosProvider>
+			<main className="w-full mx-2">
+
+				<App />
+			</main>
 		</div>
 	);
 }

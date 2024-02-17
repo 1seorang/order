@@ -1,134 +1,61 @@
 'use client'
-import { useState } from 'react'
-import clsx from 'clsx'
-import { useTodos } from './contexts/todos'
-import { TodoItemProps } from './contexts/todos/type'
-import SearchIcon from './components/icons/SearchIcon'
-import TodoItem from './components/TodoItem'
-import Heading from './components/Heading'
-import TodoPopup from './components/TodoPopup'
-import ToggleButton from './components/ToggleButton'
+import React, { useState, useEffect } from 'react';
+import './index.css';
+import { Divider } from '@nextui-org/divider';
 
-interface TodoPopupData {
-  index: number | null
-  item: TodoItemProps
-}
+const App: React.FC = () => {
+  const [todos, setTodos] = useState<string[]>([]);
+  const [task, setTask] = useState<string>('');
 
-const App = () => {
-  const todos = useTodos()
+  // Load TODOs from local storage on app startup
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem('todos') || '[]') as string[];
+    if (storedTodos) {
+      setTodos(storedTodos);
+    }
+  }, []);
 
-  const [searchTerm, setSearchTerm] = useState('')
-  const [isShowCompletedTodos, setIsShowCompletedTodos] = useState(false)
-  const [todoPopupData, setTodoPopupData] = useState<TodoPopupData | null>(null)
+  // Update local storage whenever TODOs change
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
-  const handleOpenTodoPopup = (index: number | null, item: TodoItemProps) => {
-    setTodoPopupData({
-      index,
-      item,
-    })
-  }
+  const handleAddTodo = () => {
+    if (task.trim() !== '') {
+      setTodos([...todos, task]);
+      setTask('');
+    }
+  };
 
-  const getTodoItem = (isShow: boolean, index: number, item: TodoItemProps) => {
-    if (!isShow || !item.value.includes(searchTerm)) return null
-
-    return (
-      <TodoItem
-        key={index}
-        item={item}
-        index={index}
-        searchTerm={searchTerm}
-        onEditTodoItem={() => {
-          setTodoPopupData({
-            index,
-            item,
-          })
-        }}
-      />
-    )
-  }
+  const handleRemoveTodo = (index: number) => {
+    const newTodos = todos.filter((_, i) => i !== index);
+    setTodos(newTodos);
+  };
 
   return (
-    <div className='flex min-h-screen items-center bg-gray-50/10 backdrop-blur-md'>
-      {todoPopupData && (
-        <TodoPopup
-          onClosePopup={() => setTodoPopupData(null)}
-          index={todoPopupData.index}
-          data={todoPopupData.item}
-        />
-      )}
-
-      <div className={clsx('mx-auto w-full max-w-3xl px-4 py-1')}>
-        <Heading />
-
-        <div className='pt-1'>
-          <div className='flex items-center gap-3'>
-            <div className='relative w-full'>
-              <input
-                type='search'
-                className={clsx(
-                  'w-full bg-gray-50 p-4',
-                  'rounded-lg border border-gray-300',
-                  'text-gray-900',
-                  'focus:border-blue-500 focus:ring-blue-500',
-                )}
-                placeholder='Search Todos'
-                value={searchTerm}
-                onChange={(event) => setSearchTerm(event.target.value)}
-              />
-              <button
-                type='button'
-                className={clsx(
-                  'absolute bottom-2 right-2 top-2',
-                  'rounded-lg bg-blue-700 px-4',
-                  'hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300',
-                )}
-              >
-                <SearchIcon />
-              </button>
-            </div>
-
-            <button
-              onClick={() =>
-                handleOpenTodoPopup(null, {
-                  value: '',
-                  isChecked: false,
-                })
-              }
-              type='button'
-              className={clsx(
-                'rounded-lg bg-emerald-700 px-4 py-2.5',
-                'font-medium text-white',
-                'hover:bg-emerald-800 focus:outline-none focus:ring-4 focus:ring-emerald-300',
-              )}
-            >
-              Add&nbsp;Todos
-            </button>
-          </div>
-        </div>
-
-        <div className='py-3'>
-          {todos?.map((item, index) =>
-            getTodoItem(!item.isChecked, index, item),
-          )}
-
-          <ToggleButton
-            onToggle={() => setIsShowCompletedTodos(!isShowCompletedTodos)}
-            todosAmount={
-              todos?.filter(
-                (item) => item.isChecked && item.value.includes(searchTerm),
-              ).length || 0
-            }
-            isShow={isShowCompletedTodos}
+    <div className="App w-full backdrop-blur-md rounded-xl mt-1 bg-slate-300/10 min-h-[400px] ">
+      <main className="App-header w-full pt-1 rounded-md">
+        <div className="todo-input w-full justify-between px-2 my-2">
+          <input
+            type="text"
+            placeholder="Tambah Catatan"
+            value={task}
+            onChange={(e) => setTask(e.target.value)}
           />
-
-          {isShowCompletedTodos &&
-            todos?.map((item, index) =>
-              getTodoItem(item.isChecked, index, item),
-            )}
+          <button className='text-xl font-bold' onClick={handleAddTodo}>+</button>
         </div>
-      </div>
+      </main>
+      <Divider className='my-2' />
+      <ul className="todo-list">
+        {todos.map((todo, index) => (
+          <li key={index}>
+            {todo}
+            <button onClick={() => handleRemoveTodo(index)}>X</button>
+          </li>
+        ))}
+      </ul>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

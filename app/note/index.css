@@ -1,8 +1,57 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap");
 
+.App-header {
+  background-color: #282c34;
 
-@layer base {
-  html {
-    font-family: Nunito;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.todo-input input {
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 14px;
+  margin-right: 10px;
+  flex: 1;
+}
+
+.todo-input button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #61dafb50;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0 4px;
+  margin: 0 4px;
+}
+
+.todo-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 1px 0 0 5px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+  min-width: 300px; /* Set a minimum width for the list items */
+}
+
+.todo-list li button {
+  background-color: #ff6c6c;
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
 }

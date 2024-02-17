@@ -58,7 +58,7 @@ export const Navbar = () => {
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <Logo />
-            <p  className="font-bold text-xl rounded-lg drop-shadow-sm shadow-default-400 px-3 my-2 animate-pulse duration-[500] transition-all  bg-transparent backdrop-filter cursor-pointer bg-gradient-to-r from-fuchsia-300 to-fuchsia-600/80 bg-clip-text text-transparent hover:text-fuchsia-600   shadow">Maintenance Planner</p>
+            <p className="font-bold text-xl rounded-lg drop-shadow-sm shadow-default-400 px-3 my-2 animate-pulse duration-[500] transition-all  bg-transparent backdrop-filter cursor-pointer bg-gradient-to-r from-fuchsia-300 to-fuchsia-600/80 bg-clip-text text-transparent hover:text-fuchsia-600   shadow">Maintenance Planner</p>
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
@@ -84,7 +84,7 @@ export const Navbar = () => {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden sm:flex gap-2">
+        <NavbarItem className="hidden  gap-2">
           <Link isExternal href={siteConfig.links.twitter} aria-label="Twitter">
             <TwitterIcon className="text-default-500" />
           </Link>
@@ -94,9 +94,8 @@ export const Navbar = () => {
           <Link isExternal href={siteConfig.links.github} aria-label="Github">
             <GithubIcon className="text-default-500" />
           </Link>
-          <ThemeSwitch className={undefined} classNames={undefined} />
         </NavbarItem>
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+        <NavbarItem className="hidden ">{searchInput}</NavbarItem>
         <NavbarItem className="hidden md:flex">
           <Button
             as={Link}
@@ -108,10 +107,14 @@ export const Navbar = () => {
             $ Buy
           </Button>
         </NavbarItem>
+        <NavbarItem className="flex">
+
+          <ThemeSwitch className={undefined} classNames={undefined} />
+        </NavbarItem>
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal href={siteConfig.links.github} aria-label="Github">
+        <Link className="hidden" isExternal href={siteConfig.links.github} aria-label="Github">
           <GithubIcon className="text-default-500" />
         </Link>
         <ThemeSwitch className={undefined} classNames={undefined} />
