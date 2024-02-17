@@ -234,7 +234,7 @@ function SearchApp() {
                                     fontSize={8}
                                     fontColor="rgb(255 0 0 / 25%)"
                                   >
-                                    <ModalHeader className={title({ color: 'violet', class: "text-xl bg-slate-700/50 py-1" })}>
+                                    <ModalHeader className={title({ color: 'violet', class: "text-lg bg-slate-700/60 py-1" })}>
                                       {item[2] || item[0]}
                                     </ModalHeader>
                                     <ModalBody className="text-sm text-foreground-800 uppercase">
