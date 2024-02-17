@@ -67,11 +67,11 @@ export const Navbar = () => {
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  `data-[active=true]:text-primary data-[active=true]:font-medium ${item.class}`
+                  `data-[active=true]:text-primary data-[active=true]:font-medium ${item?.class}`
                 )}
                 color="foreground"
                 href={item.href}
-                target="_blank"
+
               >
                 {item.label}
               </NextLink>
@@ -99,9 +99,9 @@ export const Navbar = () => {
         <NavbarItem className="hidden md:flex">
           <Button
             as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
+            className="text-sm font-normal text-default-600 bg-default-100 hover:animate-pulse duration-1000"
             href={siteConfig.links.sponsor}
-            startContent={<HeartFilledIcon className="text-danger" />}
+            startContent={<HeartFilledIcon className="text-danger group-hover:animate-ping" />}
             variant="flat"
           >
             $ Buy
@@ -115,7 +115,7 @@ export const Navbar = () => {
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         <Link className="hidden" isExternal href={siteConfig.links.github} aria-label="Github">
-          <GithubIcon className="text-default-500" />
+          {/* <GithubIcon className="text-default-500" /> */}
         </Link>
         <ThemeSwitch className={undefined} classNames={undefined} />
         <NavbarMenuToggle />

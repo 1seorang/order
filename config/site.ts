@@ -14,19 +14,20 @@ export const siteConfig = {
 			href: "/order",
 		},
 		{
-			label: "Achievement",
-			href: "https://tfjsmartfactory.online/listrik/",
+			label: "Catatan",
+			href: "/note",
 
 		},
 		{
-			label: "Blog",
-			href: "https://tfjsmartfactory.online/listrik/",
-			class: "disabled"
+			label: "Kalkulator",
+			href: "/kalkulator",
+			
 		},
 		{
-			label: "About",
-			href: "",
-			class: "disabled"
+			label: "Informasi",
+			href: "/loading",
+			class: 'text-base-700'
+			
 		}
 	],
 	navMenuItems: [
@@ -35,13 +36,10 @@ export const siteConfig = {
 			href: "/",
 		},
 		{
-			label: "Ordering",
-			href: "/order",
+			label: "Cloud",
+			href: "/",
 		},
-		{
-			label: "Achievement",
-			href: "https://tfjsmartfactory.online/listrik/",
-		},
+	
 		{
 			label: "Blog",
 			href: "https://tfjsmartfactory.online/blog/",
