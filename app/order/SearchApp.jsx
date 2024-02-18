@@ -270,9 +270,9 @@ function SearchApp() {
                                       >
                                         Close
                                       </Button>
-                                      <Button startContent={<FaPrint />}
-                                        className="bg-[#6f4ef2] shadow-lg shadow-indigo-500/20 hover:backdrop-blur-lg hover:bg-blue-500/50 transition duration-500"
-                                        onPress={Print('modal1')}
+                                      <Button startContent={<FaPrint />} variant="shadow" color="warning"
+                                        className="dark:shadow-[#6f4ef2] shadow-lg shadow-indigo-500/20 hover:backdrop-blur-lg hover:bg-red-500/70 transition duration-500"
+                                        onPress={()=>Print('modal1')}
                                       >
                                         Print
                                       </Button>
@@ -325,7 +325,7 @@ function SearchApp() {
                         className="absolute right-0 bottom-0 hover:bg-purple-500/40 bg-purple-300/40 transition-all"
                         title="Print"
                         size="sm"
-                        onClick={Print('card1')}
+                        onClick={()=>Print('card1')}
                       >
                         <FaFileDownload className="p-0 m-0 text-lg fill-slate-200 stroke-yellow-950" />
                       </Button>
@@ -344,11 +344,11 @@ function SearchApp() {
 
 export default SearchApp;
 
-const Print = (print) => {
+const Print = async ({printthis}) => {
   //console.log('print');
-  let printContents = document.getElementById(print).innerHTML;
-  let originalContents = document.body.innerHTML;
-  document.body.innerHTML = printContents;
+  let printContents = await document.getElementById(printthis);
+  let originalContents =  document.body.innerHTML;
+  document.body.innerHTML = printContents?.innerHTML;
   window.print();
-  document.body.innerHTML = originalContents;
+  return  document.body.innerHTML = originalContents;
 };
