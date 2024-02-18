@@ -13,7 +13,7 @@ import { FiSearch } from "react-icons/fi";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import Watermark from "@uiw/react-watermark";
 import { Spinner } from "@nextui-org/spinner";
-import { FaFileDownload } from "react-icons/fa";
+import { FaFileDownload, FaPrint  } from "react-icons/fa";
 import {
   Modal,
   ModalContent,
@@ -194,7 +194,7 @@ function SearchApp() {
                     <CardBody className="py-1 px-2">
                       <div>
                         {" "}
-                        <Modal
+                        <Modal id="modal1"
                           size="md"
                           backdrop="blur"
                           isOpen={isOpen}
@@ -270,11 +270,11 @@ function SearchApp() {
                                       >
                                         Close
                                       </Button>
-                                      <Button
+                                      <Button startContent={<FaPrint />}
                                         className="bg-[#6f4ef2] shadow-lg shadow-indigo-500/20 hover:backdrop-blur-lg hover:bg-blue-500/50 transition duration-500"
-                                        onPress={onClose}
+                                        onPress={Print('modal1')}
                                       >
-                                        Close (Juga)
+                                        Print
                                       </Button>
                                     </ModalFooter>
                                   </Watermark>
@@ -325,7 +325,7 @@ function SearchApp() {
                         className="absolute right-0 bottom-0 hover:bg-purple-500/40 bg-purple-300/40 transition-all"
                         title="Print"
                         size="sm"
-                        onClick={Print}
+                        onClick={Print('card1')}
                       >
                         <FaFileDownload className="p-0 m-0 text-lg fill-slate-200 stroke-yellow-950" />
                       </Button>
@@ -344,9 +344,9 @@ function SearchApp() {
 
 export default SearchApp;
 
-const Print = () => {
+const Print = (print) => {
   //console.log('print');
-  let printContents = document.getElementById("card1").innerHTML;
+  let printContents = document.getElementById(print).innerHTML;
   let originalContents = document.body.innerHTML;
   document.body.innerHTML = printContents;
   window.print();
