@@ -194,7 +194,7 @@ function SearchApp() {
                     <CardBody className="py-1 px-2">
                       <div>
                         {" "}
-                        <Modal id="modal1"
+                        <Modal
                           size="md"
                           backdrop="blur"
                           isOpen={isOpen}
@@ -212,10 +212,10 @@ function SearchApp() {
                               "hover:bg-white/5 text-red-500/70 hover:text-red-500/90 active:bg-white/10 z-10",
                           }}
                         >
-                          <ModalContent>
+                          <ModalContent >
                             {(onClose) => (
-                              <>
-                                <Watermark
+                              <  >
+                                <Watermark className="print:hidden"
                                   content="Aby"
                                   rotate={-45}
                                   fontFamily="FontSans"
@@ -224,7 +224,7 @@ function SearchApp() {
                                   fontSize={22}
                                   fontColor="rgb(255 0 0 / 25%)"
                                 >
-                                  <Watermark
+                                  <Watermark className="print:hidden "
                                     content="© 2023"
                                     rotate={-45}
                                     offsetTop={117}
@@ -237,7 +237,10 @@ function SearchApp() {
                                     <ModalHeader className={title({ color: 'violet', class: "text-lg bg-slate-700/60 py-1" })}>
                                       {item[2] || item[0]}
                                     </ModalHeader>
-                                    <ModalBody className="text-sm text-foreground-800 uppercase">
+                                    <ModalBody className="text-sm text-foreground-800 uppercase" id="modal1">
+                                    <span className={title({ color: 'violet', class: "text-lg font-bold bg-slate-700/60 py-1 hidden print:flex" })}>
+                                      {item[2] || item[0]}
+                                    </span>
                                       <p>
                                         Dept : {item[18]} <br />
                                         Date : {item[5]}
@@ -272,7 +275,7 @@ function SearchApp() {
                                       </Button>
                                       <Button startContent={<FaPrint />} variant="shadow" color="warning"
                                         className="dark:shadow-[#6f4ef2] shadow-lg shadow-indigo-500/20 hover:backdrop-blur-lg hover:bg-red-500/70 transition duration-500"
-                                        onPress={()=>Print('modal1')}
+                                        onPress={Print}
                                       >
                                         Print
                                       </Button>
@@ -325,7 +328,7 @@ function SearchApp() {
                         className="absolute right-0 bottom-0 hover:bg-purple-500/40 bg-purple-300/40 transition-all"
                         title="Print"
                         size="sm"
-                        onClick={()=>Print('card1')}
+                        
                       >
                         <FaFileDownload className="p-0 m-0 text-lg fill-slate-200 stroke-yellow-950" />
                       </Button>
@@ -344,11 +347,11 @@ function SearchApp() {
 
 export default SearchApp;
 
-const Print = async ({printthis}) => {
+const Print =  () => {
   //console.log('print');
-  let printContents = await document.getElementById(printthis);
+  let printContents =  document.getElementById('modal1')?.innerHTML;
   let originalContents =  document.body.innerHTML;
-  document.body.innerHTML = printContents?.innerHTML;
+  document.body.innerHTML = printContents;
   window.print();
   return  document.body.innerHTML = originalContents;
 };

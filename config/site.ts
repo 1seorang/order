@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-	name: "Alfa 1.0",
+	name: "Alfa 1.2",
 	stack: "Next.js + NextUI",
 	description: "BYOB",
 	navItems: [
