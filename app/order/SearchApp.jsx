@@ -13,7 +13,7 @@ import { FiSearch } from "react-icons/fi";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import Watermark from "@uiw/react-watermark";
 import { Spinner } from "@nextui-org/spinner";
-import { FaFileDownload, FaPrint  } from "react-icons/fa";
+import { FaFileDownload, FaPrint } from "react-icons/fa";
 import {
   Modal,
   ModalContent,
@@ -65,31 +65,40 @@ function SearchApp() {
     setSubmittedSearchTerm(searchTerm.toUpperCase());
     setLoading(true);
   };
+  const Print = () => {
+    //console.log('print');
+    let printContents = document.getElementById("card1").innerHTML;
+    let originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+  };
 
   // console.log(`dicari : ${submittedSearchTerm}`);
   // console.log(`hasilna : ${filteredData}`);
   return (
     <>
-      <Divider className="my-2 px-8" />
+      <Divider className="my-2 px-8 print:hidden" />
       <div>
         <form
           onSubmit={handleSearchSubmit}
-          className="mb-5 justify-center w-full"
+          className="mb-5 justify-center w-full print:hidden"
         >
           <Input
             variant="faded"
             size="md"
-            className={{
+            className={{ 
               label: [
                 "bg-transparent",
                 "underline",
                 "text-slate-600",
                 "dark:text-slate-800",
-              ],
+              ], 
               input: [
                 "bg-transparent",
                 "text-black/70 dark:text-white/50",
                 "placeholder:text-slate-700/50 dark:placeholder:text-slate-100/60",
+                "print:hidden"
               ],
               innerWrapper: "bg-transparent",
               inputWrapper: [
@@ -131,7 +140,7 @@ function SearchApp() {
           <Button
             type="submit"
             radius="full"
-            className="relative overflow-visible rounded-full hover:translate-y-1 px-12 shadow-xl bg-blue-700/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-blue-700/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
+            className="relative overflow-visible rounded-full hover:translate-y-1 px-12 shadow-xl bg-blue-700/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-blue-700/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0 print:hidden"
           // className={buttonStyles({
           //   color: "primary",
           //   radius: "full",
@@ -141,7 +150,7 @@ function SearchApp() {
             Cari <FiSearch />
           </Button>
         </form>
-        <Divider />
+        <Divider className="print:hidden" />
         <div className="flex w-full flex-col">
           <Tabs
             size="sm"
@@ -152,7 +161,7 @@ function SearchApp() {
                 "gap-6 w-full relative rounded-none p-0 border-b border-divider text-[#aaa]",
               cursor: "w-full bg-[#2244ee]",
               tab: "max-w-fit px-0 h-8",
-              tabContent: "group-data-[selected=true]:text-[#ddf]",
+              tabContent: "group-data-[selected=true]:text-[#ddf]", base: "print:hidden"
             }}
           >
             {loading ? (
@@ -172,7 +181,7 @@ function SearchApp() {
               ) : filteredData.length > 0 ? (filteredData.map((item, index) => (
                 <Tab key={index} title={item[0]}>
                   <Card className="w-full py-1 print:bg-red-950/60" id="card1">
-                    <CardHeader className="block gap-1 p-1 bg-transparent">
+                    <CardHeader className="block gap-1 p-1 bg-transparent print:hidden">
                       <h4 className="text-medium font-medium drop-shadow-xl shadow-gray-200">
                         {" "}
                         {item[1]}{" "}
@@ -190,7 +199,7 @@ function SearchApp() {
                         <FaArrowUpRightFromSquare className="" />
                       </Button>
                     </CardHeader>
-                    <Divider />
+                    <Divider className="print:hidden"  />
                     <CardBody className="py-1 px-2">
                       <div>
                         {" "}
@@ -205,17 +214,17 @@ function SearchApp() {
                           classNames={{
                             body: "py-3",
                             // backdrop: "bg-[#292f46]/70 backdrop-opacity-60",
-                            base: "border-[#292f46] bg-[#19172c] dark:bg-[#19172c]/20 text-[#a8b0d3] backdrop-blur dark:text-white/90",
+                            base: "border-[#292f46] bg-[#19172c] dark:bg-[#19172c]/20 text-[#a8b0d3] backdrop-blur dark:text-white/90 print:bg-slate-100",
                             header: "border-b-[1px] border-[#292f46]",
                             footer: "border-t-[1px] border-[#292f46]",
                             closeButton:
-                              "hover:bg-white/5 text-red-500/70 hover:text-red-500/90 active:bg-white/10 z-10",
+                              "hover:bg-white/5 text-red-500/70 hover:text-red-500/90 active:bg-white/10 z-10 print:hidden", wrapper: "print:w-screen h-fit"
                           }}
                         >
-                          <ModalContent >
+                          <ModalContent className="print:w-full">
                             {(onClose) => (
                               <  >
-                                <Watermark className="print:hidden"
+                                <Watermark
                                   content="Aby"
                                   rotate={-45}
                                   fontFamily="FontSans"
@@ -224,7 +233,7 @@ function SearchApp() {
                                   fontSize={22}
                                   fontColor="rgb(255 0 0 / 25%)"
                                 >
-                                  <Watermark className="print:hidden "
+                                  <Watermark
                                     content="© 2023"
                                     rotate={-45}
                                     offsetTop={117}
@@ -237,10 +246,10 @@ function SearchApp() {
                                     <ModalHeader className={title({ color: 'violet', class: "text-lg bg-slate-700/60 py-1" })}>
                                       {item[2] || item[0]}
                                     </ModalHeader>
-                                    <ModalBody className="text-sm text-foreground-800 uppercase" id="modal1">
-                                    <span className={title({ color: 'violet', class: "text-lg font-bold bg-slate-700/60 py-1 hidden print:flex" })}>
-                                      {item[2] || item[0]}
-                                    </span>
+                                    <ModalBody className="text-sm text-foreground-800 uppercase print:text-blue-900/80" id="modal1">
+                                      {/* <span className={title({ color: 'violet', class: "text-lg font-bold bg-slate-700/60 py-1 hidden print:flex" })}>
+                                        {item[2] || item[0]}
+                                      </span> */}
                                       <p>
                                         Dept : {item[18]} <br />
                                         Date : {item[5]}
@@ -265,7 +274,7 @@ function SearchApp() {
                                         Tgl. GR : {item[17]}
                                       </p>
                                     </ModalBody>
-                                    <ModalFooter className="py-2">
+                                    <ModalFooter className="py-2 print:hidden">
                                       <Button
                                         color="danger"
                                         variant="ghost"
@@ -275,7 +284,7 @@ function SearchApp() {
                                       </Button>
                                       <Button startContent={<FaPrint />} variant="shadow" color="warning"
                                         className="dark:shadow-[#6f4ef2] shadow-lg shadow-indigo-500/20 hover:backdrop-blur-lg hover:bg-red-500/70 transition duration-500"
-                                        onPress={Print}
+                                        onPress={()=>window.print()}
                                       >
                                         Print
                                       </Button>
@@ -287,14 +296,14 @@ function SearchApp() {
                           </ModalContent>
                         </Modal>
                       </div>
-                      <p className="text-default-800"> {item[4]} </p>
-                      <p className="text-small text-default-700">
+                      <p className="text-default-800 print:hidden"> {item[4]} </p>
+                      <p className="text-small text-default-700 print:hidden">
                         {" "}
                         ({item[7] + item[8]})
                       </p>
                       <Spacer y={4} />
                       <Code color="secondary">
-                        <p className="text-default-700">
+                        <p className="text-default-700 print:hidden">
                           No. PR
                           {": "}
                           <Snippet size="sm" symbol=" ">
@@ -304,7 +313,7 @@ function SearchApp() {
                       </Code>
                       <Spacer y={2} />
                       <Code>
-                        <p className="text-small text-default-700 w-full">
+                        <p className="text-small text-default-700 w-full print:hidden">
                           No. PO{": "}
                           <Snippet
                             variant="solid"
@@ -317,8 +326,8 @@ function SearchApp() {
                         </p>
                       </Code>
                     </CardBody>
-                    <Divider />
-                    <CardFooter>
+                    <Divider  className="print:hidden" />
+                    <CardFooter className=" print:hidden ">
                       <Code>
                         <p className="text-small text-default-700 w-full">
                           Vendor: {item[16]}
@@ -328,7 +337,7 @@ function SearchApp() {
                         className="absolute right-0 bottom-0 hover:bg-purple-500/40 bg-purple-300/40 transition-all"
                         title="Print"
                         size="sm"
-                        
+                              onClick={Print}
                       >
                         <FaFileDownload className="p-0 m-0 text-lg fill-slate-200 stroke-yellow-950" />
                       </Button>
@@ -346,12 +355,3 @@ function SearchApp() {
 }
 
 export default SearchApp;
-
-const Print =  () => {
-  //console.log('print');
-  let printContents =  document.getElementById('modal1')?.innerHTML;
-  let originalContents =  document.body.innerHTML;
-  document.body.innerHTML = printContents;
-  window.print();
-  return  document.body.innerHTML = originalContents;
-};
