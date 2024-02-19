@@ -173,11 +173,14 @@ export function AudioSettings() {
 }
 
 const Container = styled.div`
+  margin-top: 2rem;
   padding: 10px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  flex-direction: row;
+ justify-content: space-around;
+
   gap: 10px;
+  width: 100%;
 
   & > div {
     display: flex;

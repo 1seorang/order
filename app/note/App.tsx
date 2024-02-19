@@ -33,7 +33,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="App w-full backdrop-blur-md rounded-xl mt-1 bg-slate-300/10 min-h-[400px] ">
+    <div className="App w-full backdrop-blur-md rounded-xl mt-1 bg-slate-300/10 min-h-[400px]">
       <main className="App-header w-full pt-1 rounded-md">
         <div className="todo-input w-full justify-between px-2 my-2">
           <input

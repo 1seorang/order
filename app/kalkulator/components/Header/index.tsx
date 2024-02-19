@@ -1,10 +1,10 @@
 import styled from "styled-components"
 import { AudioSettings } from "../AudioSettings"
 
-export function Header(){
+export function Header() {
 
     return <>
-        <Container>
+        <Container className="w-full">
             <AudioSettings />
         </Container>
     </>

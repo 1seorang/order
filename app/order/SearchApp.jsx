@@ -87,13 +87,13 @@ function SearchApp() {
           <Input
             variant="faded"
             size="md"
-            className={{ 
+            className={{
               label: [
                 "bg-transparent",
                 "underline",
                 "text-slate-600",
                 "dark:text-slate-800",
-              ], 
+              ],
               input: [
                 "bg-transparent",
                 "text-black/70 dark:text-white/50",
@@ -199,7 +199,7 @@ function SearchApp() {
                         <FaArrowUpRightFromSquare className="" />
                       </Button>
                     </CardHeader>
-                    <Divider className="print:hidden"  />
+                    <Divider className="print:hidden" />
                     <CardBody className="py-1 px-2">
                       <div>
                         {" "}
@@ -218,7 +218,7 @@ function SearchApp() {
                             header: "border-b-[1px] border-[#292f46]",
                             footer: "border-t-[1px] border-[#292f46]",
                             closeButton:
-                              "hover:bg-white/5 text-red-500/70 hover:text-red-500/90 active:bg-white/10 z-10 print:hidden", wrapper: "print:w-screen h-fit"
+                              "hover:bg-white/5 text-red-500/70 hover:text-red-500/90 active:bg-white/10 z-10 print:hidden", wrapper: "print:w-screen h-full"
                           }}
                         >
                           <ModalContent className="print:w-full">
@@ -284,7 +284,7 @@ function SearchApp() {
                                       </Button>
                                       <Button startContent={<FaPrint />} variant="shadow" color="warning"
                                         className="dark:shadow-[#6f4ef2] shadow-lg shadow-indigo-500/20 hover:backdrop-blur-lg hover:bg-red-500/70 transition duration-500"
-                                        onPress={()=>window.print()}
+                                        onPress={() => window.print()}
                                       >
                                         Print
                                       </Button>
@@ -326,7 +326,7 @@ function SearchApp() {
                         </p>
                       </Code>
                     </CardBody>
-                    <Divider  className="print:hidden" />
+                    <Divider className="print:hidden" />
                     <CardFooter className=" print:hidden ">
                       <Code>
                         <p className="text-small text-default-700 w-full">
@@ -337,7 +337,7 @@ function SearchApp() {
                         className="absolute right-0 bottom-0 hover:bg-purple-500/40 bg-purple-300/40 transition-all"
                         title="Print"
                         size="sm"
-                              onClick={Print}
+                        onClick={Print}
                       >
                         <FaFileDownload className="p-0 m-0 text-lg fill-slate-200 stroke-yellow-950" />
                       </Button>
