@@ -13,11 +13,11 @@ import {
   IconHome2,
   IconMessageText,
   IconBxsCalculator,
-  IconBxEdit,
+  IconBxEdit, NotificationIcon
 } from "./icons";
 import { Button } from "@nextui-org/button";
 import NextLink from "next/link";
-
+import { Badge } from "@nextui-org/react";
 function BottomNav() {
   return (
     <div className="fixed bottom-0 flex al sm:hidden w-full z-50">
@@ -82,12 +82,19 @@ function BottomNav() {
         </NavbarContent>
 
         <NavbarContent className="w-full flex justify-center text-center  h-full z-48 ">
-          <NavbarItem className="w-full flex justify-center">
-            <NextLink href="/loading" color="primary" variant="light">
-              <IconMessageText className="stroke-cyan-500 hover:stroke-cyan-700 text-3xl " />
-              <small className="text-cyan-500">Pesan</small>
-            </NextLink>
-          </NavbarItem>
+          <Badge isOneChar
+            content={<NotificationIcon size={12} className="animate-pulse" />}
+            color="danger"
+            shape="circle"
+            placement="top-right">
+            <NavbarItem className="w-full flex justify-center">
+
+              <NextLink href="/docs" color="primary" variant="light">
+                <IconMessageText className="stroke-cyan-500 hover:stroke-cyan-700 text-3xl " />
+                <small className="text-cyan-500">Pesan</small>
+              </NextLink>
+            </NavbarItem>
+          </Badge>
         </NavbarContent>
       </Navbar>
     </div>

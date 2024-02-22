@@ -25,7 +25,7 @@ export const siteConfig = {
 		},
 		{
 			label: "Informasi",
-			href: "/loading",
+			href: "/docs",
 			class: 'text-base-700'
 			
 		}
