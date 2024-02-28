@@ -34,7 +34,7 @@ function BottomNav() {
         <NavbarContent className="w-full flex justify-center text-center  h-full z-48 ">
           <NavbarItem className="w-full flex justify-center">
             <NextLink href="/note" color="primary" variant="light">
-              <IconBxEdit className="stroke-cyan-500 hover:stroke-cyan-700 text-3xl" />
+              <IconBxEdit className="stroke-cyan-500 hover:stroke-cyan-700 text-3xl fill-blue-800" />
               <small className="text-cyan-500">Note</small>
             </NextLink>
           </NavbarItem>
@@ -50,7 +50,7 @@ function BottomNav() {
                 variant="light"
                 color="primary"
               >
-                <IconSearchengin className="stroke-cyan-500 hover:stroke-cyan-700 text-5xl" />
+                <IconSearchengin className="stroke-cyan-500 hover:stroke-cyan-700 text-5xl drop-shadow-md shadow-slate-400" />
                 <small className="text-cyan-500"></small>
               </Button>
             </NextLink>
@@ -75,26 +75,29 @@ function BottomNav() {
               className="justify-center  "
               variant="light"
             >
-              <IconBxsCalculator className="stroke-cyan-500 hover:stroke-cyan-700 text-3xl justify-self-center " />
+              <IconBxsCalculator className="stroke-cyan-500 hover:stroke-cyan-700 text-3xl justify-self-center fill-blue-800" />
               <small className="text-cyan-500">Calc</small>
             </NextLink>
           </NavbarItem>
         </NavbarContent>
 
         <NavbarContent className="w-full flex justify-center text-center  h-full z-48 ">
-          <Badge isOneChar
-            content={<NotificationIcon size={12} className="animate-pulse" />}
-            color="danger"
-            shape="circle"
-            placement="top-right">
-            <NavbarItem className="w-full flex justify-center">
+          <div className="w-full">
 
-              <NextLink href="/docs" color="primary" variant="light">
-                <IconMessageText className="stroke-cyan-500 hover:stroke-cyan-700 text-3xl " />
-                <small className="text-cyan-500">Pesan</small>
-              </NextLink>
-            </NavbarItem>
-          </Badge>
+            <Badge isOneChar
+              content={<NotificationIcon size={12} className="animate-pulse" />}
+              color="danger"
+              shape="circle"
+              placement="top-right">
+              <NavbarItem className="w-full flex justify-center">
+
+                <NextLink href="/docs" color="primary" variant="light">
+                  <IconMessageText className="stroke-cyan-500 hover:stroke-cyan-700 text-3xl fill-blue-700" />
+                  <small className="text-cyan-500">Pesan</small>
+                </NextLink>
+              </NavbarItem>
+            </Badge>
+          </div>
         </NavbarContent>
       </Navbar>
     </div>

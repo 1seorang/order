@@ -11,25 +11,21 @@ import { Code } from "@nextui-org/react";
 import { Spacer } from "@nextui-org/spacer";
 import { FiSearch } from "react-icons/fi";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
-import Watermark from "@uiw/react-watermark";
+import QRcode from './QRcode'
 import { Spinner } from "@nextui-org/spinner";
-import { FaFileDownload, FaPrint } from "react-icons/fa";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from "@nextui-org/modal";
+// import { FaFileDownload, FaPrint } from "react-icons/fa";
+import { QRIcon } from '@/components/icons'
+import ModalX from "./Modal";
 import { useDisclosure } from "@nextui-org/use-disclosure";
-import { title } from "@/components/primitives";
+
 function SearchApp() {
+  const [isiModal, setIsiModal] = useState([])
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [submittedSearchTerm, setSubmittedSearchTerm] = useState("");
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (loading) {
       // Fetch data from your API
@@ -191,8 +187,34 @@ function SearchApp() {
                         Status: {item[14]}{" "}
                       </p>
                       <Button
-                        onPress={onOpen}
-                        className="absolute top-0 right-0 p-0  m-0 hover:opacity-80 opacity-50 transition-all hover:bg-blue-700 bg-blue-500/60"
+                        onPress={() => {
+                          setIsiModal
+                            (<><p>
+                              Dept : {item[18]} <br />
+                              Date : {item[5]}
+                            </p>
+                              <p>
+                                Mat. Code : {item[3]} <br />
+                                Mat. Name : {item[4]} <br />
+                                Qty : {item[7]} {item[8]}
+                              </p>
+                              <p>
+                                No PR : {item[9]} <br />
+                                No PO : {item[15]}
+                              </p>
+                              <p>
+                                Remark : {item[13]}
+                                <br />
+                                user : {item[12]}
+                              </p>
+                              <p>
+                                Vendor : {item[16]}
+                                <br />
+                                Tgl. GR : {item[17]}
+                              </p></>)
+                          onOpen()
+                        }} isIconOnly
+                        className="absolute top-0 right-0 p-0  m-0 hover:opacity-80 opacity-50 transition-all hover:bg-blue-500/60 hover:backdrop-blur-md" color="primary" variant="shadow"
                         size="sm"
                         title="Lihat Detail"
                       >
@@ -202,99 +224,8 @@ function SearchApp() {
                     <Divider className="print:hidden" />
                     <CardBody className="py-1 px-2">
                       <div>
-                        {" "}
-                        <Modal
-                          size="md"
-                          backdrop="blur"
-                          isOpen={isOpen}
-                          isDismissable={false}
-                          placement="center"
-                          onOpenChange={onOpenChange}
-                          radius="3xl"
-                          classNames={{
-                            body: "py-3",
-                            // backdrop: "bg-[#292f46]/70 backdrop-opacity-60",
-                            base: "border-[#292f46] bg-[#19172c] dark:bg-[#19172c]/20 text-[#a8b0d3] backdrop-blur dark:text-white/90 print:bg-slate-100",
-                            header: "border-b-[1px] border-[#292f46]",
-                            footer: "border-t-[1px] border-[#292f46]",
-                            closeButton:
-                              "hover:bg-white/5 text-red-500/70 hover:text-red-500/90 active:bg-white/10 z-10 print:hidden", wrapper: "print:w-screen h-full"
-                          }}
-                        >
-                          <ModalContent className="print:w-full">
-                            {(onClose) => (
-                              <  >
-                                <Watermark
-                                  content="Aby"
-                                  rotate={-45}
-                                  fontFamily="FontSans"
-                                  width={70}
-                                  height={15}
-                                  fontSize={22}
-                                  fontColor="rgb(255 0 0 / 25%)"
-                                >
-                                  <Watermark
-                                    content="© 2023"
-                                    rotate={-45}
-                                    offsetTop={117}
-                                    offsetLeft={117}
-                                    width={70}
-                                    height={15}
-                                    fontSize={8}
-                                    fontColor="rgb(255 0 0 / 25%)"
-                                  >
-                                    <ModalHeader className={title({ color: 'violet', class: "text-lg bg-slate-700/60 py-1" })}>
-                                      {item[2] || item[0]}
-                                    </ModalHeader>
-                                    <ModalBody className="text-sm text-foreground-800 uppercase print:text-blue-900/80" id="modal1">
-                                      {/* <span className={title({ color: 'violet', class: "text-lg font-bold bg-slate-700/60 py-1 hidden print:flex" })}>
-                                        {item[2] || item[0]}
-                                      </span> */}
-                                      <p>
-                                        Dept : {item[18]} <br />
-                                        Date : {item[5]}
-                                      </p>
-                                      <p>
-                                        Mat. Code : {item[3]} <br />
-                                        Mat. Name : {item[4]} <br />
-                                        Qty : {item[7]} {item[8]}
-                                      </p>
-                                      <p>
-                                        No PR : {item[9]} <br />
-                                        No PO : {item[15]}
-                                      </p>
-                                      <p>
-                                        Remark : {item[13]}
-                                        <br />
-                                        user : {item[12]}
-                                      </p>
-                                      <p>
-                                        Vendor : {item[16]}
-                                        <br />
-                                        Tgl. GR : {item[17]}
-                                      </p>
-                                    </ModalBody>
-                                    <ModalFooter className="py-2 print:hidden">
-                                      <Button
-                                        color="danger"
-                                        variant="ghost"
-                                        onPress={onClose}
-                                      >
-                                        Close
-                                      </Button>
-                                      <Button startContent={<FaPrint />} variant="shadow" color="warning"
-                                        className="dark:shadow-[#6f4ef2] shadow-lg shadow-indigo-500/20 hover:backdrop-blur-lg hover:bg-red-500/70 transition duration-500"
-                                        onPress={() => window.print()}
-                                      >
-                                        Print
-                                      </Button>
-                                    </ModalFooter>
-                                  </Watermark>
-                                </Watermark>
-                              </>
-                            )}
-                          </ModalContent>
-                        </Modal>
+
+                        <ModalX item={item} isOpen={isOpen} onOpenChange={onOpenChange} isi={isiModal} />
                       </div>
                       <p className="text-default-800 print:hidden"> {item[4]} </p>
                       <p className="text-small text-default-700 print:hidden">
@@ -333,14 +264,25 @@ function SearchApp() {
                           Vendor: {item[16]}
                         </p>
                       </Code>
-                      <Button
+                      <Button isIconOnly size="sm"
+                        className="absolute bottom-0 right-0"
+                        variant="ghost" title="Lihat QR Code"
+                        color="warning"
+                        onPress={() => {
+                          setIsiModal(<QRcode id={item[2]} />)
+
+                          onOpen()
+
+                        }}
+                      ><QRIcon className="p-unit-xs" /></Button>
+                      {/* <Button
                         className="absolute right-0 bottom-0 hover:bg-purple-500/40 bg-purple-300/40 transition-all"
                         title="Print"
                         size="sm"
                         onClick={Print}
                       >
                         <FaFileDownload className="p-0 m-0 text-lg fill-slate-200 stroke-yellow-950" />
-                      </Button>
+                      </Button> */}
                     </CardFooter>
                   </Card>
                 </Tab>
