@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Tabs, Tab } from "@nextui-org/tabs";
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/button";
+// import { Button } from "@nextui-org/button";
 // import { button as buttonStyles } from "@nextui-org/theme";
 import { Divider } from "@nextui-org/divider";
 import { Snippet } from "@nextui-org/snippet";
@@ -17,7 +17,7 @@ import { Spinner } from "@nextui-org/spinner";
 import { QRIcon } from '@/components/icons'
 import ModalX from "./Modal";
 import { useDisclosure } from "@nextui-org/use-disclosure";
-
+import {Tooltip, Button} from "@nextui-org/react";
 function SearchApp() {
   const [isiModal, setIsiModal] = useState([])
   const [data, setData] = useState([]);
@@ -186,6 +186,8 @@ function SearchApp() {
                         {" "}
                         Status: {item[14]}{" "}
                       </p>
+                      <Tooltip delay={200} placement="top-start" closeDelay={1500} color="warning" content="Show Details" showArrow defaultOpen className="opacity-70" >
+
                       <Button
                         onPress={() => {
                           setIsiModal
@@ -220,6 +222,7 @@ function SearchApp() {
                       >
                         <FaArrowUpRightFromSquare className="" />
                       </Button>
+                      </Tooltip>
                     </CardHeader>
                     <Divider className="print:hidden" />
                     <CardBody className="py-1 px-2">
@@ -264,8 +267,9 @@ function SearchApp() {
                           Vendor: {item[16]}
                         </p>
                       </Code>
+                      <Tooltip placement="top-start" delay={100} content="Show QR" showArrow defaultOpen closeDelay={1500} color="warning"  >
                       <Button isIconOnly size="sm"
-                        className="absolute bottom-0 right-0"
+                        className="absolute bottom-1 right-1"
                         variant="ghost" title="Lihat QR Code"
                         color="warning"
                         onPress={() => {
@@ -275,6 +279,8 @@ function SearchApp() {
 
                         }}
                       ><QRIcon className="p-unit-xs" /></Button>
+
+                      </Tooltip>
                       {/* <Button
                         className="absolute right-0 bottom-0 hover:bg-purple-500/40 bg-purple-300/40 transition-all"
                         title="Print"

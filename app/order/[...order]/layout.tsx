@@ -1,11 +1,6 @@
 
 import { Metadata, Viewport } from "next";
 import { siteConfig } from "@/config/site";
-// export const viewport: Viewport = {
-//   themeColor: '#000',
-
-// }
-
 
 export const metadata: Metadata = {
 

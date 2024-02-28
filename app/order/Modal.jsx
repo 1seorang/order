@@ -29,7 +29,7 @@ export default function ModalX({ item, isOpen, onOpenChange, isi }) {
                 body: "py-3",
                 // backdrop: "bg-[#292f46]/70 backdrop-opacity-60",
                 base: "border-[#292f46] bg-[#19172c] dark:bg-[#19172c]/20 text-[#a8b0d3] backdrop-blur dark:text-white/90 print:bg-slate-100",
-                header: "border-b-[1px] border-[#292f46]",
+                header: "border-b-[1px] border-[#292f46] w-full",
                 footer: "border-t-[1px] border-[#292f46]",
                 closeButton:
                     "hover:bg-white/5 text-red-500/70 hover:text-red-500/90 active:bg-white/10 z-10 print:hidden", wrapper: "print:w-screen h-full"
@@ -57,7 +57,7 @@ export default function ModalX({ item, isOpen, onOpenChange, isi }) {
                                 fontSize={8}
                                 fontColor="rgb(255 0 0 / 25%)"
                             >
-                                <ModalHeader className={title({ color: 'violet', class: "text-lg bg-slate-700/60 py-1" })}>
+                                <ModalHeader className={title({ color: 'violet', class: "text-lg bg-slate-700/70 py-2 w-full", fullWidth: 'true' })}>
                                     {item[2] || item[0]}
                                 </ModalHeader>
                                 <ModalBody className="text-sm text-foreground-800 uppercase print:text-blue-900/80" id="modal1">
