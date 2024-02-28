@@ -186,7 +186,7 @@ function SearchApp() {
                         {" "}
                         Status: {item[14]}{" "}
                       </p>
-                      <Tooltip delay={200} placement="top-start" closeDelay={1500} color="warning" content="Show Details" showArrow defaultOpen className="opacity-70" >
+                      <Tooltip delay={200} placement="top-start" color="warning" content="Show Details" showArrow defaultOpen className="opacity-70" >
 
                       <Button
                         onPress={() => {
@@ -232,7 +232,7 @@ function SearchApp() {
                       </div>
                       <p className="text-default-800 print:hidden"> {item[4]} </p>
                       <p className="text-small text-default-700 print:hidden">
-                        {" "}
+                 
                         ({item[7] + item[8]})
                       </p>
                       <Spacer y={4} />
@@ -267,7 +267,7 @@ function SearchApp() {
                           Vendor: {item[16]}
                         </p>
                       </Code>
-                      <Tooltip placement="top-start" delay={100} content="Show QR" showArrow defaultOpen closeDelay={1500} color="warning"  >
+                      <Tooltip placement="bottom-start" delay={100} content="Show QR" showArrow defaultOpen  color="warning"  >
                       <Button isIconOnly size="sm"
                         className="absolute bottom-1 right-1"
                         variant="ghost" title="Lihat QR Code"
