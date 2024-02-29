@@ -22,29 +22,35 @@ export default function QRcode({ id }) {
             downloadLink.click();
         };
         img.src = `data:image/svg+xml;base64,${btoa(svgData)}`;
+        console.log(img.height)
+        console.log(canvas)
+        console.log(img.width)
+        console.log(canvas.width)
       };
     
     return (
-      <div className="w-full h-auto grid  place-content-center gap-1 ">
+      <div className="w-full h-auto grid  place-content-center gap-1 mx-auto ">
         <QRCode
           id="QRCode"
+          size={256}
           style={{
-            border: "2px solid rgba(100,100,100,0.6)",
-            borderRadius: "20px",
-            padding: "4px",
-            margin: "4px",
-          }}
-          className="w-fit border-spacing-6 pt-6 border-foreground-400 rounded-md"
+            // border: "1px solid ",
+            borderRadius: "10px",
+            // padding: "4px",
+            // margin: "1px 14px",
+            maxWidth: "100%", 
+            height:"auto"
+          }} viewBox="0 0 256 256" title={id}
+          className="border-slate-400/90 border-2 p-2 rounded-xl border-spacing-6"
           value={`${document.location.href}/${id}`}
         />
         <Button
           variant="shadow"
           radius="sm"
           size="sm"
-          color="secondary"
+          color="secondary" className="text-base font-semibold shadow-lg border-t-rose-700"
           startContent={<HiMiniInboxArrowDown />}
-          onClick={() => onImageCownload()}
-        >
+          onClick={() => onImageCownload()}>
           Download
         </Button>
       </div>

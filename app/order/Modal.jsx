@@ -58,10 +58,10 @@ export default function ModalX({ item, isOpen, onOpenChange, isi }) {
                                 fontSize={8}
                                 fontColor="rgb(255 0 0 / 25%)"
                             >
-                                <ModalHeader className={title({ color: 'violet', size: 'sm', class: "text-base md:text-lg bg-slate-700/70 py-2 w-full pl-2", fullWidth: 'true' })}>
+                                <ModalHeader className={title({ color: 'violet', size: 'sm', class: "text-base md:text-lg bg-slate-700/70 py-4 w-full pl-2", fullWidth: 'true' })}>
                                     {item[2] || item[0]}
                                 </ModalHeader>
-                                <ModalBody className="text-sm text-foreground-800 uppercase print:text-blue-900/80" id="modal1">
+                                <ModalBody className="text-sm text-foreground-800 uppercase py-6 print:text-blue-900/80" id="modal1">
                                     {isi}
 
                                 </ModalBody>
