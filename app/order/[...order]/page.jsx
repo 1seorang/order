@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { title } from "@/components/primitives";
 // import { usePathname, useParams } from "next/navigation";
+import Watermark from "@uiw/react-watermark";
 import { Card, CardHeader, CardBody, CardFooter, Divider, Textarea, Input } from "@nextui-org/react";
 import { FaBookBookmark } from "react-icons/fa6";
 import { Spinner } from "@nextui-org/react";
@@ -55,7 +56,25 @@ export default function PageQR({ params }) {
                 </CardHeader>
                 <Divider />
                 <CardBody className="" key={1}>
-
+                <Watermark
+                            content="Aby"
+                            rotate={-45}
+                            fontFamily="FontSans"
+                            width={70}
+                            height={15}
+                            fontSize={22}
+                            fontColor="rgb(255 0 0 / 25%)"
+                        >
+                            <Watermark
+                                content="© 2023"
+                                rotate={-45}
+                                offsetTop={117}
+                                offsetLeft={117}
+                                width={70}
+                                height={15}
+                                fontSize={8}
+                                fontColor="rgb(255 0 0 / 25%)"
+                            >
                     {loading ? <Spinner color="secondary" /> : filteredData?.map((item, key) => {
                         return (
                             <div key={key} className=" grid gap-1 in-range:cursor-pointer read-only:pl-2 ">
@@ -75,6 +94,10 @@ export default function PageQR({ params }) {
                             </div>)
 
                     })}
+
+                    </Watermark>
+                    </Watermark>
+
                 </CardBody>
                
                 <CardFooter>
