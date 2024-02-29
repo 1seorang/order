@@ -25,7 +25,7 @@ export default function Home() {
           Jangan menunggu sempurna untuk memulai sesuatu, tapi jalanilah
           walaupun itu burik
         </h2>
-        <code className="italic text-default-600"> ~ John </code>
+        <code className="italic text-default-600 text-base"> ~ John </code>
       </div>
 
       <div className="flex gap-3">
@@ -35,9 +35,9 @@ export default function Home() {
           className={buttonStyles({
             color: "primary",
             radius: "full",
-            variant: "shadow",
+            variant: "flat",
             class:
-              "active:transition-all active:duration-700 active:ease-in-out relative overflow-visible hover:text-white/80  hover:translate-y-1 text-blue-200 px-12 shadow-md bg-blue-500/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-blue-500/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0",
+              "active:transition-all active:duration-700 active:ease-in-out relative overflow-visible hover:text-white/80  hover:translate-y-1 text-blue-100 text-base px-12 shadow-md  after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-blue-500/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0 font-medium font-sans",
           })}
           data-hover={true}
           data-focus={true}
@@ -49,7 +49,7 @@ export default function Home() {
       <div className="mt-8">
         <Snippet hideSymbol hideCopyButton variant="flat">
           <span>
-            App <Code color="primary">Versi 1.1</Code>
+            App <Code color="primary">Versi 2.1</Code>
           </span>
         </Snippet>
       </div>
