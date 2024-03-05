@@ -37,7 +37,7 @@ export default function Home() {
             radius: "full",
             variant: "flat",
             class:
-              "active:transition-all active:duration-700 active:ease-in-out relative overflow-visible hover:text-white/80  hover:translate-y-1 text-blue-100 text-base px-12 shadow-md  after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-blue-500/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0 font-medium font-sans",
+              "active:transition-all active:duration-700 active:ease-in-out relative overflow-visible hover:text-white/80  hover:translate-y-1 text-blue-100 text-base px-12 shadow-md  after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-blue-500/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0 font-medium font-sans animate-[levitate_10s_ease_infinite]",
           })}
           data-hover={true}
           data-focus={true}
@@ -46,7 +46,7 @@ export default function Home() {
         </Link>
       </div>
 
-      <div className="mt-8">
+      <div className="mt-8 animate-[levitate_13s_ease_infinite]">
         <Snippet hideSymbol hideCopyButton variant="flat">
           <span>
             App <Code color="primary">Versi 2.1</Code>

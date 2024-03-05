@@ -26,7 +26,7 @@ export const siteConfig = {
 		{
 			label: "Informasi",
 			href: "/docs",
-			class: 'text-base-700'
+			class: 'text-base-700 animate-pulse'
 			
 		}
 	],

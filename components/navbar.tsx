@@ -61,12 +61,12 @@ export const Navbar = () => {
             <p className="font-bold text-xl rounded-lg drop-shadow-sm shadow-default-400 px-3 my-2 animate-pulse duration-[500] transition-all  bg-transparent backdrop-filter cursor-pointer bg-gradient-to-r from-fuchsia-300 to-fuchsia-600/80 bg-clip-text text-transparent hover:text-fuchsia-600   shadow">Maintenance Planner</p>
           </NextLink>
         </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
+        <ul className="hidden md:flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
                 className={clsx(
-                  linkStyles({ color: "foreground" }),
+                  linkStyles({ color: "primary", isBlock: true }),
                   `data-[active=true]:text-primary data-[active=true]:font-medium ${item?.class}`
                 )}
                 color="foreground"
@@ -101,10 +101,10 @@ export const Navbar = () => {
             as={Link}
             className="text-sm font-normal text-default-600 bg-default-100 hover:animate-pulse duration-1000"
             href={siteConfig.links.sponsor}
-            startContent={<HeartFilledIcon className="text-danger group-hover:animate-ping" />}
+            startContent={<HeartFilledIcon className="text-danger group-hover:animate-[ping_0.3s_ease-in-out_2]" />}
             variant="flat"
           >
-            $ Buy
+            $ <span className="hidden xl:flex">Buy </span>
           </Button>
         </NavbarItem>
         <NavbarItem className="flex">
