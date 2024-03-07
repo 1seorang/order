@@ -37,7 +37,7 @@ export const siteConfig = {
 		},
 		{
 			label: "Cloud",
-			href: "/",
+			href: "/cloud",
 		},
 	
 		{

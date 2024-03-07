@@ -18,6 +18,7 @@ import { QRIcon } from '@/components/icons'
 import ModalX from "./Modal";
 import { useDisclosure } from "@nextui-org/use-disclosure";
 import {Tooltip, Button} from "@nextui-org/react";
+import { title } from "@/components/primitives";
 function SearchApp() {
   const [isiModal, setIsiModal] = useState([])
   const [data, setData] = useState([]);
@@ -71,7 +72,7 @@ function SearchApp() {
   };
 
   // console.log(`dicari : ${submittedSearchTerm}`);
-  // console.log(`hasilna : ${filteredData}`);
+  console.log(`hasilna : ${filteredData.length}`); 
   return (
     <>
       <Divider className="my-2 px-8 print:hidden" />
@@ -174,7 +175,15 @@ function SearchApp() {
             ) : // "loading"
               !filteredData ? (
                 "loading"
-              ) : filteredData.length > 0 ? (filteredData.map((item, index) => (
+              ) :
+              submittedSearchTerm & filteredData.length < 1  ? (
+                <Tab key="load1x" title="  ">
+  
+                  <Spacer className="my-4" />
+                  <span className={title({color:"cyan", size: 'sm'})}>Not Found!</span>
+                </Tab>
+              ) 
+              : filteredData.length > 0 ? (filteredData.map((item, index) => (
                 <Tab key={index} title={item[0]}>
                   <Card className="w-full py-1 print:bg-red-950/60" id="card1">
                     <CardHeader className="block gap-1 p-1 bg-transparent print:hidden">
